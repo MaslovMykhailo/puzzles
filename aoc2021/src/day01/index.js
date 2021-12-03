@@ -14,7 +14,7 @@ const part2 = (rawInput) => {
   let i = 0,
     count = 0,
     prev = 0
-    
+
   for (i; i < input.length; ++i) {
     const sum = input[i] + (input[i + 1] || 0) + (input[i + 2] || 0)
     sum > prev && ++count

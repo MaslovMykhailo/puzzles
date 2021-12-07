@@ -90,15 +90,15 @@
     {
       "part1": {
         "solved": false,
-        "result": null,
+        "result": "342641",
         "attempts": [],
-        "time": null
+        "time": 5.54
       },
       "part2": {
         "solved": false,
-        "result": null,
+        "result": "93006301",
         "attempts": [],
-        "time": null
+        "time": 7.17
       }
     },
     {

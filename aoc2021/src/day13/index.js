@@ -11,7 +11,7 @@ const parseInput = (rawInput) => {
     folds: folds
       .split("\n")
       .map((description) => description.match(FOLD_REGEX).groups)
-      .map(({axis, value}) => ({axis, value: Number(value)})),
+      .map(({ axis, value }) => ({ axis, value: Number(value) })),
   }
 }
 
@@ -30,13 +30,15 @@ const getMax = (dots) => {
   const [xMax, yMax] = [0, 1]
     .map((i) => dots.map((dot) => dot[i]))
     .map((values) => Math.max(...values))
-  return {xMax, yMax}
+  return { xMax, yMax }
 }
 
 const printDots = (dots) => {
-  const {xMax, yMax} = getMax(dots)
-  const matrix = Array(yMax + 1).fill(null).map(() => Array(xMax + 1).fill(" "))
-  dots.forEach(([x, y]) => matrix[y][x] = "#")
+  const { xMax, yMax } = getMax(dots)
+  const matrix = Array(yMax + 1)
+    .fill(null)
+    .map(() => Array(xMax + 1).fill(" "))
+  dots.forEach(([x, y]) => (matrix[y][x] = "#"))
 
   console.log("=".repeat(xMax + 1))
   matrix.forEach((line) => console.log(line.join("")))
@@ -50,17 +52,17 @@ const part1 = (rawInput) => {
 }
 
 const part2 = (rawInput) => {
-  const {dots, folds} = parseInput(rawInput)
-  
+  const { dots, folds } = parseInput(rawInput)
+
   const folded = folds.reduce(
     (foldedDots, operation) => fold(foldedDots, operation, getMax(foldedDots)),
-    dots
+    dots,
   )
 
   printDots(folded)
 
-  const {xMax} = getMax(folded)
-  return xMax === 4 ? 'O' : 'EPLGRULR'
+  const { xMax } = getMax(folded)
+  return xMax === 4 ? "O" : "EPLGRULR"
 }
 
 const input = `
@@ -93,7 +95,7 @@ run({
     solution: part1,
   },
   part2: {
-    tests: [{ input, expected: 'O' }],
+    tests: [{ input, expected: "O" }],
     solution: part2,
   },
   trimTestInputs: true,
